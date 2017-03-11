@@ -1,6 +1,6 @@
 {
   "name": "widewhale/yii2-debug-vardumper",
-  "description": "description_text",
+  "description": "A panel for yii2-debug with var dumps",
   "type": "yii2-extension",
   "homepage": "https://github.com/widewhale/yii2-debug-vardumper",
   "license": "MIT",

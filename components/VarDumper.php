@@ -22,4 +22,13 @@ class VarDumper extends Component
 
         Yii::$app->trigger('widewhale.debug.vardumper.dump', $event);
     }
+
+    public function dumpAsString($var, $depth = 10, $highlight = false)
+    {
+        $event = new VarDumperEvent;
+        $event->dump = YiiVarDumper::dumpAsString($var, $depth, $highlight);;
+        Yii::$app->trigger('widewhale.debug.vardumper.dump', $event);
+
+        return $event->dump;
+    }
 }
