@@ -2,6 +2,7 @@
 
 namespace widewhale\debug\vardumper\panels;
 
+use Yii;
 use yii\debug\Panel;
 use widewhale\debug\vardumper\components\VarDumper;
 use widewhale\debug\vardumper\components\VarDumperEvent;
@@ -16,7 +17,7 @@ class VarDumperPanel extends Panel
     public function init()
     {
         parent::init();
-        Event::on(VarDumper::className(), VarDumper::EVENT_VARDUMPER, function (VarDumperEvent $event) {
+        Yii::$app->on('widewhale.debug.vardumper.dump', function (VarDumperEvent $event) {
             $this->_varDumps[] = $event->dump;
         });
     }
