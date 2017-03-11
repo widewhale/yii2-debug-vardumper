@@ -13,5 +13,10 @@
       "name": "Nikolaj Dolgushin",
       "homepage": "https://nikolaj.space"
     }
-  ]
+  ],
+  "autoload": {
+    "psr-4": {
+      "widewhale\\debug\\vardumper\\": ""
+    }
+  }
 }

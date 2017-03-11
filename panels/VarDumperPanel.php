@@ -7,7 +7,7 @@ use widewhale\debug\vardumper\components\VarDumper;
 use widewhale\debug\vardumper\components\VarDumperEvent;
 
 
-class VardumperPanel extends Panel
+class VarDumperPanel extends Panel
 {
     private $_varDumps = [];
 
@@ -16,7 +16,7 @@ class VardumperPanel extends Panel
     public function init()
     {
         parent::init();
-        Event::on(VarDump::className(), VarDumper::EVENT_VARDUMPER, function (VarDumperEvent $event) {
+        Event::on(VarDumper::className(), VarDumper::EVENT_VARDUMPER, function (VarDumperEvent $event) {
             $this->_varDumps[] = $event->dump;
         });
     }
