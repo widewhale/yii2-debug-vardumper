@@ -1,0 +1,17 @@
+{
+  "name": "widewhale/yii2-debug-vardumper",
+  "description": "description_text",
+  "type": "yii2-extension",
+  "homepage": "https://github.com/widewhale/yii2-debug-vardumper",
+  "license": "MIT",
+  "require": {
+    "yiisoft/yii2": "*",
+    "yiisoft/yii2-debug": "*"
+  },
+  "authors": [
+    {
+      "name": "Nikolaj Dolgushin",
+      "homepage": "https://nikolaj.space"
+    }
+  ]
+}
