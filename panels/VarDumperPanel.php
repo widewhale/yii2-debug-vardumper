@@ -2,11 +2,10 @@
 
 namespace widewhale\debug\vardumper\panels;
 
-use Yii;
-use yii\debug\Panel;
 use widewhale\debug\vardumper\components\VarDumper;
 use widewhale\debug\vardumper\components\VarDumperEvent;
-
+use Yii;
+use yii\debug\Panel;
 
 class VarDumperPanel extends Panel
 {
@@ -22,9 +21,8 @@ class VarDumperPanel extends Panel
         });
     }
 
-
     /**
-     * @inheritdoc
+     * {@inheritdoc}
      */
     public function getName()
     {
@@ -32,29 +30,29 @@ class VarDumperPanel extends Panel
     }
 
     /**
-     * @inheritdoc
+     * {@inheritdoc}
      */
     public function getSummary()
     {
         $url = $this->getUrl();
         $count = count($this->data);
+
         return "<div class=\"yii-debug-toolbar__block\"><a href=\"$url\">Var dumps <span class=\"yii-debug-toolbar__label yii-debug-toolbar__label_info\">$count</span></a></div>";
     }
 
     /**
-     * @inheritdoc
+     * {@inheritdoc}
      */
     public function getDetail()
     {
-        return '<ol><li>' . implode('<li>', $this->data) . '</ol>';
+        return '<ol><li>'.implode('<li>', $this->data).'</ol>';
     }
 
     /**
-     * @inheritdoc
+     * {@inheritdoc}
      */
     public function save()
     {
         return $this->_varDumps;
     }
-
 }
