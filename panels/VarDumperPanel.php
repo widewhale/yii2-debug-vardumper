@@ -2,14 +2,14 @@
 
 namespace widewhale\debug\vardumper\panels;
 
-use widewhale\debug\vardumper\components\VarDumper;
-use widewhale\debug\vardumper\components\VarDumperEvent;
 use Yii;
+use yii\data\ArrayDataProvider;
 use yii\debug\Panel;
+use widewhale\debug\vardumper\components\VarDumperEvent;
 
 class VarDumperPanel extends Panel
 {
-    private $_varDumps = [];
+    private $_varDumps;
 
     const EVENT_DUMP = 'dump';
 
@@ -17,40 +17,42 @@ class VarDumperPanel extends Panel
     {
         parent::init();
         Yii::$app->on('widewhale.debug.vardumper.dump', function (VarDumperEvent $event) {
-            $this->_varDumps[] = $event->dump;
+            $this->_varDumps[] = [
+                'line' => $event->line,
+                'file' => $event->file,
+                'dump' => $event->dump,
+            ];
         });
     }
 
-    /**
-     * {@inheritdoc}
-     */
     public function getName()
     {
         return 'Var dumps';
     }
 
-    /**
-     * {@inheritdoc}
-     */
     public function getSummary()
     {
+
         $url = $this->getUrl();
         $count = count($this->data);
 
-        return "<div class=\"yii-debug-toolbar__block\"><a href=\"$url\">Var dumps <span class=\"yii-debug-toolbar__label yii-debug-toolbar__label_info\">$count</span></a></div>";
+        return Yii::$app->view->render('@widewhale/debug/vardumper/views/default/summary', [
+            'count' => $count,
+            'url' => $url,
+        ]);
     }
 
-    /**
-     * {@inheritdoc}
-     */
     public function getDetail()
     {
-        return '<ol><li>'.implode('<li>', $this->data).'</ol>';
+        $dataProvider = new ArrayDataProvider([
+            'allModels' => $this->data,
+        ]);
+        return Yii::$app->view->render('@widewhale/debug/vardumper/views/default/detail', [
+            'dataProvider' => $dataProvider,
+            'panel' => $this,
+        ]);
     }
 
-    /**
-     * {@inheritdoc}
-     */
     public function save()
     {
         return $this->_varDumps;

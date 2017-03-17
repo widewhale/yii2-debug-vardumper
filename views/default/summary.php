@@ -1,0 +1,1 @@
+<div class="yii-debug-toolbar__block"><a href="<?= $url ?>">Var dumps <span class="yii-debug-toolbar__label yii-debug-toolbar__label_info"><?= $count ?></span></a></div>
