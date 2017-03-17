@@ -1,7 +1,8 @@
 {
   "name": "widewhale/yii2-debug-vardumper",
-  "description": "A panel for yii2-debug with var dumps",
+  "description": "Vardumper panel for yii2-debug",
   "type": "yii2-extension",
+  "keywords": ["yii2","extension","yii2-debug","panel","vardumper"],
   "homepage": "https://github.com/widewhale/yii2-debug-vardumper",
   "license": "MIT",
   "require": {
