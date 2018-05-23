@@ -34,7 +34,12 @@ class VarDumperPanel extends Panel
     {
 
         $url = $this->getUrl();
-        $count = count($this->data);
+        
+        if (is_array($this->data)) {
+            $count = \count($this->data);
+        } else {
+            $count = 0;
+        }
 
         return Yii::$app->view->render('@widewhale/debug/vardumper/views/default/summary', [
             'count' => $count,
