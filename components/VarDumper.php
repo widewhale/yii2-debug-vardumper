@@ -12,7 +12,7 @@ class VarDumper extends Component
     {
         $event = new VarDumperEvent;
         $backtrace = debug_backtrace(1);
-        $event->dump = \yii\helpers\VarDumper::dumpAsString($var, $depth);
+        $event->dump = \yii\helpers\VarDumper::dumpAsString($var, $depth, true);
         $event->line = $backtrace[0]['line'];
         $event->file = $backtrace[0]['file'];
 
